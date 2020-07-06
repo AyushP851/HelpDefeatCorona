@@ -2,8 +2,9 @@ import 'react-native-gesture-handler'
 import React from 'react'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import SignUp from '../screens/signUpScreen'
 import SignIn from '../screens/signInScreen'
+import ForgotPassword from '../screens/forgotPasswordScreen'
+import SignUp from '../screens/signUpScreen'
 import Setup from '../screens/setupScreen'
 import OTP from '../screens/otpScreen'
 import Address from '../screens/addressScreen'
@@ -15,14 +16,20 @@ import End from '../screens/endScreen'
 import { IconButton } from 'react-native-paper';
 
 const AuthStack = createStackNavigator({
-  SignUp: {
-    screen: SignUp,
+  SignIn: {
+    screen: SignIn,
     navigationOptions: () => ({
       headerShown: false,
     })
   },
-  SignIn: {
-    screen: SignIn,
+  ForgotPassword: {
+    screen: ForgotPassword,
+    navigationOptions: () => ({
+      headerShown: false,
+    })
+  },
+  SignUp: {
+    screen: SignUp,
     navigationOptions: () => ({
       headerShown: false,
     })

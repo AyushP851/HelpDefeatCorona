@@ -48,8 +48,8 @@ export default class SignInScreen extends React.Component {
         <TouchableWithoutFeedback onPress={ Keyboard.dismiss }>
           <SafeAreaView style={{ flex: 1 }}>
             <StatusBar/>       
-            <Image source={ require('../images/logo.png') } style={{ marginVertical: 10, alignSelf: 'center' }}/>     
-            <Text style={ globalStyles.header }>Log in</Text>
+            <Image source={ require('../images/logo.png') } style={{ marginVertical: 0, alignSelf: 'center' }}/>     
+            <Text style={ globalStyles.header }>Log In</Text>
             <Text style={{ ...globalStyles.mediumText, marginTop: 10 }}>Email address</Text>
             <MyInput 
               autoFocus={ true }
@@ -58,7 +58,7 @@ export default class SignInScreen extends React.Component {
               setValue={(value) => this.onChangeValue('username', value)}
               onSubmitEditing={() => inputRef[1].focus()}
             />
-            <Text style={{ ...globalStyles.mediumText, marginTop: 20 }}>password</Text>
+            <Text style={{ ...globalStyles.mediumText, marginTop: 10 }}>Password</Text>
             <MyInput 
               inputRef={(v) => addRef(1, v)}
               style={{ marginRight: -5}}
@@ -67,16 +67,14 @@ export default class SignInScreen extends React.Component {
               value={ this.state.password }
               setValue={(value) => this.onChangeValue('password', value)}
             />
-            <View style={{ flex: 1}}></View>
-            <Button 
-              mode='contained'
-              style={{ ...globalStyles.buttonStyle, marginBottom: 15, marginTop: 40 }}
-              onPress={() =>  this.signIn() }
+            <Button
+              style={{ alignSelf: 'flex-start', marginLeft: -15, marginTop: 10}}
+              onPress={() => this.props.navigation.navigate('ForgotPassword')}
             >
-              Sign In
+              Forgot Password?
             </Button>
-            <Divider />
-            <View style={{ flexDirection: 'row', alignSelf: 'center', marginBottom: 30 }}>
+            <View style={{ flex: 1}}></View>
+            <View style={{ flexDirection: 'row', alignSelf: 'center', marginBottom: -10 }}>
               <Text style={ globalStyles.smallText }>Don't have an account?</Text>
               <Button 
                 labelStyle={{ ...globalStyles.smallText, color: colors.primary }}
@@ -85,6 +83,14 @@ export default class SignInScreen extends React.Component {
                 Sign Up
               </Button>
             </View>
+            <Divider />
+            <Button 
+              mode='contained'
+              style={{ ...globalStyles.buttonStyle, marginBottom: 20}}
+              onPress={() =>  this.signIn()}
+            >
+              Sign In
+            </Button>
           </SafeAreaView>       
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
