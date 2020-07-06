@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, KeyboardAvoidingView, Keyboard,
   TouchableWithoutFeedback,SafeAreaView, ScrollView,
-  StatusBar, Dimensions, StyleSheet
+  StatusBar, Dimensions,
 } from 'react-native'
-import { Text, TouchableRipple } from 'react-native-paper'
+import { Text } from 'react-native-paper'
 import { globalStyles, colors } from '../styles/globalStyles'
 
 export default class Home extends React.Component {
@@ -23,6 +23,4 @@ export default class Home extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  list: {},
-})
+
