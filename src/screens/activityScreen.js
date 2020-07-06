@@ -14,7 +14,7 @@ export default class Home extends React.Component {
           <SafeAreaView style={{ width: Dimensions.get('screen').width, flex: 1 }}>
             <ScrollView showsVerticalScrollIndicator={ false }>
               <StatusBar />
-              <View style={{ height: (Dimensions.get('screen').height)/3, backgroundColor: colors.primary }}></View>
+              <View style={{ height: (Dimensions.get('screen').height)/4, backgroundColor: colors.primary }}></View>
             </ScrollView>
           </SafeAreaView>
         </TouchableWithoutFeedback>
