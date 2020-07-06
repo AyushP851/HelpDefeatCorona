@@ -5,12 +5,12 @@ import { globalStyles, colors } from '../styles/globalStyles'
 
 const List = ({ icon, text, onPress}) => {
   return (
-    <View style={{ backgroundColor: colors.altBackground, borderWidth: 0.7, borderColor: '#FFF', flexDirection: 'row', alignItems: 'center'}}>
-      <IconButton icon={ icon } style={{ marginLeft: 30}} />
-      <TouchableRipple style={{ flex: 1, padding: 7}} onPress={() => onPress()}>
-        <Text style={{ ...globalStyles.mediumText }}>{ text }</Text>
-      </TouchableRipple>
-    </View>
+    <TouchableRipple style={{ padding: 1 }} onPress={() => onPress()}>
+      <View style={{ backgroundColor: colors.background, flexDirection: 'row', alignItems: 'center', paddingVertical: 5}}>
+        <IconButton icon={ icon } color={ colors.placeholder }  style={{ marginHorizontal: 20 }} />
+        <Text style={{ ...globalStyles.mediumText, color: colors.placeholder  }}>{ text }</Text>
+      </View>
+    </TouchableRipple>
   )
 }
 

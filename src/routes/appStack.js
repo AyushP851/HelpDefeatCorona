@@ -61,7 +61,7 @@ const AppStack = createMaterialTopTabNavigator({
     activeTintColor: colors.primary,
     inactiveTintColor: colors.placeholder,
     style: {
-      backgroundColor: colors.altBackground
+      backgroundColor: colors.background
     }
   },
 })
