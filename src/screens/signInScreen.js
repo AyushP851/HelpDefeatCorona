@@ -13,7 +13,7 @@ function addRef(i, ref) {
   inputRef.splice(i, 0, ref)
 }
 
-export default class SignInScreen extends React.Component {
+export default class SignIn extends React.Component {
   
   state = {
     username: '',

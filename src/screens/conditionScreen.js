@@ -6,7 +6,7 @@ import { Text, IconButton, Badge, Button } from 'react-native-paper'
 import { globalStyles, colors } from '../styles/globalStyles'
 import Checker from '../components/checker'
 
-export default class Home extends React.Component {
+export default class Condition extends React.Component {
   state = { 
     name: this.props.navigation.getParam('name'),
     a: false,

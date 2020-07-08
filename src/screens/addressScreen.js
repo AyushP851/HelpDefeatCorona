@@ -12,7 +12,7 @@ function addRef(i, ref) {
   inputRef.splice(i, 0, ref)
 }
 
-export default class SignInScreen extends React.Component {
+export default class Address extends React.Component {
   state={
     country: this.props.navigation.getParam('country'),
     name: this.props.navigation.getParam('name'),

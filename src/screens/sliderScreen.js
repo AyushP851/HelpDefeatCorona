@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import { globalStyles, colors } from '../styles/globalStyles'
 import Navigator from '../routes/mainSwitchNav'
 
-const slider = () => { 
+const Slider = () => { 
   const [mainApp, setMainApp] = useState(false)
   const fun = async () => {
     await AsyncStorage.setItem('check', 'true')
@@ -88,4 +88,4 @@ const slider = () => {
   }
 }
 
-export default slider
+export default Slider

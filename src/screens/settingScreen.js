@@ -7,7 +7,7 @@ import { Text } from 'react-native-paper'
 import { globalStyles, colors } from '../styles/globalStyles'
 import List from '../components/settingList'
 
-export default class Home extends React.Component {
+export default class Setting extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView style={{ ...globalStyles.container, backgroundColor: colors.altBackground }}> 

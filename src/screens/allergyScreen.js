@@ -5,7 +5,7 @@ import { View, KeyboardAvoidingView, SafeAreaView,
 import { Text, IconButton, Badge, RadioButton, Button } from 'react-native-paper'
 import { globalStyles, colors } from '../styles/globalStyles'
 
-export default class Home extends React.Component {
+export default class Allergy extends React.Component {
   state = { 
     name: this.props.navigation.getParam('name'),
     value: 'first',

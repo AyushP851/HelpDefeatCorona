@@ -14,7 +14,7 @@ function addRef(i, ref) {
   inputRef.splice(i, 0, ref)
 }
 
-export default class Home extends React.Component {
+export default class ForgotPassword extends React.Component {
   state = {
     username: '',
     password: '',

@@ -13,7 +13,7 @@ function addRef(i, ref) {
   inputRef.splice(i, 0, ref)
 }
 
-export default class Home extends React.Component {
+export default class EditPassword extends React.Component {
   state = {
     password1: '', // old password
     password2: '', // new password

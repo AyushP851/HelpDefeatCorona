@@ -5,7 +5,10 @@ import { globalStyles, colors } from '../styles/globalStyles'
 
 
 
-const MyInput = ({ inputRef, style, autoFocus, disabled, label, placeholder, keyboardType, secureTextEntry, setSecureTextEntry, value, setValue, onSubmitEditing}) => {
+const MyInput = ({ inputRef, style, autoFocus,
+  disabled, label, placeholder, keyboardType, 
+  secureTextEntry, setSecureTextEntry, value, 
+  setValue, onSubmitEditing }) => {
 
   const [focus, setFocus] = useState(false)
 

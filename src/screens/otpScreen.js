@@ -7,7 +7,7 @@ import { Text, ProgressBar, Button, Divider } from 'react-native-paper'
 import { globalStyles, colors } from '../styles/globalStyles'
 import MyInput from '../components/myInput'
 
-export default class Home extends React.Component {
+export default class OTP extends React.Component {
   state = {
     username: this.props.navigation.getParam('email'),
     password: this.props.navigation.getParam('password'),

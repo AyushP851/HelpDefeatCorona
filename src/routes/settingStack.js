@@ -10,7 +10,7 @@ import EditMedical from '../screens/editMedical';
 import EditContact from '../screens/editContacts';
 import Logout from '../screens/logoutScreen'
 
-const AuthStack = createStackNavigator({
+const SettingStack = createStackNavigator({
   Setting: {
     screen: Setting,
     navigationOptions: () => ({
@@ -55,4 +55,4 @@ const AuthStack = createStackNavigator({
   },
 })
 
-export default createAppContainer(AuthStack)
+export default createAppContainer(SettingStack)

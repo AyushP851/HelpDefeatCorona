@@ -6,7 +6,7 @@ import { View, KeyboardAvoidingView, Keyboard,
 import { Text, TouchableRipple } from 'react-native-paper'
 import { globalStyles, colors } from '../styles/globalStyles'
 
-export default class Home extends React.Component {
+export default class EditMedical extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView style={ globalStyles.container }> 

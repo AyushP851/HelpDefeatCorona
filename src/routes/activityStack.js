@@ -4,7 +4,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Activity from '../screens/activityScreen';
 
-const AuthStack = createStackNavigator({
+const ActivityStack = createStackNavigator({
   Activity: {
     screen: Activity,
     navigationOptions: () => ({
@@ -13,4 +13,4 @@ const AuthStack = createStackNavigator({
   },
 })
 
-export default createAppContainer(AuthStack)
+export default createAppContainer(ActivityStack)

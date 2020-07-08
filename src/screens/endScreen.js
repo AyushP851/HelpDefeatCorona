@@ -7,7 +7,7 @@ import { globalStyles, colors } from '../styles/globalStyles';
 import DatePicker from '../components/datePicker';
 import MyInput from '../components/myInput';
 
-export default class SignInScreen extends React.Component {
+export default class End extends React.Component {
   state={
     name: this.props.navigation.getParam('name'),
   }

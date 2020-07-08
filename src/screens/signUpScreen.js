@@ -17,7 +17,7 @@ const defaultCountry = data.filter((obj) => {
   return (obj.name === 'India')
 })[0]
 
-export default class SignInScreen extends React.Component {
+export default class SignUp extends React.Component {
   state={
     flag: defaultCountry.flag,
     name: defaultCountry.name,

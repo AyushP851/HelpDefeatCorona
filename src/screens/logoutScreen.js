@@ -7,7 +7,7 @@ import Auth from '@aws-amplify/auth'
 import { Text, Button } from 'react-native-paper'
 import { globalStyles, colors } from '../styles/globalStyles'
 
-export default class Home extends React.Component {
+export default class Logout extends React.Component {
   signOutAlert = async () => {
     await Alert.alert(
       'Sign Out',
