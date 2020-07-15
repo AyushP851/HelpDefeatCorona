@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, KeyboardAvoidingView, Keyboard,
   TouchableWithoutFeedback,SafeAreaView, Alert,
   StatusBar, Dimensions, StyleSheet
@@ -13,23 +13,25 @@ function addRef(i, ref) {
   inputRef.splice(i, 0, ref)
 }
 
-export default class EditPassword extends React.Component {
-  state = {
+const EditPassword = (props) => {
+
+  const [state, setState] = useState({
     password1: '', // old password
     password2: '', // new password
     secureTextEntry1: true,
     secureTextEntry2: true,
+  })
+  const onChangeValue = (key, value) => {
+    setState({ ...state, [key]: value })
   }
-  onChangeValue(key, value) {
-  this.setState({[key]: value})
-  }
-  changePassword = async () => {
-    const { password1, password2 } = this.state
+  
+  const changePassword = async () => {
+    const { password1, password2 } = state
     await Auth.currentAuthenticatedUser()
     .then(user => {
       return Auth.changePassword(user, password1, password2)
     })
-    .then(data => (console.log('Password changed successfully', data)), this.props.navigation.navigate('Setting'))
+    .then(data => (console.log('Password changed successfully', data)), props.navigation.navigate('Setting'))
     .catch(err => {
       if (! err.message) {
         console.log('Error changing password: ', err)
@@ -41,47 +43,43 @@ export default class EditPassword extends React.Component {
     })
   }
 
-  render() {
-    return (
-      <KeyboardAvoidingView style={ globalStyles.container }> 
-        <TouchableWithoutFeedback onPress={ Keyboard.dismiss }>
-          <SafeAreaView style={{ width: Dimensions.get('screen').width, flex: 1, paddingHorizontal: 30 }}>
-            <StatusBar />
-            <Text style={{ ...globalStyles.header, marginTop: 30}}>Change Current Password</Text>
-            <Text style={{ ...globalStyles.mediumText, marginTop: 20 }}>Current Password</Text>
-            <MyInput 
-              autoFocus={ true }
-              style={{ marginRight: 0}}
-              secureTextEntry={ this.state.secureTextEntry1 }
-              setSecureTextEntry={(value) => this.onChangeValue('secureTextEntry1', !value)}
-              value={ this.state.password1 }
-              setValue={(value) => this.onChangeValue('password1', value)}
-              onSubmitEditing={() => inputRef[0].focus()}
-            />
-            <Text style={{ ...globalStyles.mediumText, marginTop: 20 }}>New Password</Text>
-            <MyInput 
-              inputRef={(v) => addRef(0, v)}
-              style={{ marginRight: 0}}
-              secureTextEntry={ this.state.secureTextEntry2 }
-              setSecureTextEntry={(value) => this.onChangeValue('secureTextEntry2', !value)}
-              value={ this.state.password2 }
-              setValue={(value) => this.onChangeValue('password2', value)}
-            />
-            <View style={{ flex: 1 }}></View>
-            <Button 
-              mode='contained'
-              style={{ ...globalStyles.buttonStyle, marginBottom: 40, marginTop: 40 }}
-              onPress={() =>  this.changePassword() }
-            >
-              Change Password
-            </Button>
-          </SafeAreaView>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
-    )
-  }
+  return (
+    <KeyboardAvoidingView style={ globalStyles.container }> 
+      <TouchableWithoutFeedback onPress={ Keyboard.dismiss }>
+        <SafeAreaView style={{ width: Dimensions.get('screen').width, flex: 1, paddingHorizontal: 30 }}>
+          <StatusBar />
+          <Text style={{ ...globalStyles.header, marginTop: 30}}>Change Current Password</Text>
+          <Text style={{ ...globalStyles.mediumText, marginTop: 20 }}>Current Password</Text>
+          <MyInput 
+            autoFocus={ true }
+            style={{ marginRight: 0}}
+            secureTextEntry={ state.secureTextEntry1 }
+            setSecureTextEntry={(value) => onChangeValue('secureTextEntry1', !value)}
+            value={ state.password1 }
+            setValue={(value) => onChangeValue('password1', value)}
+            onSubmitEditing={() => inputRef[0].focus()}
+          />
+          <Text style={{ ...globalStyles.mediumText, marginTop: 20 }}>New Password</Text>
+          <MyInput 
+            inputRef={(v) => addRef(0, v)}
+            style={{ marginRight: 0}}
+            secureTextEntry={ state.secureTextEntry2 }
+            setSecureTextEntry={(value) => onChangeValue('secureTextEntry2', !value)}
+            value={ state.password2 }
+            setValue={(value) => onChangeValue('password2', value)}
+          />
+          <View style={{ flex: 1 }}></View>
+          <Button 
+            mode='contained'
+            style={{ ...globalStyles.buttonStyle, marginBottom: 40, marginTop: 40 }}
+            onPress={() =>  changePassword() }
+          >
+            Change Password
+          </Button>
+        </SafeAreaView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+  )
 }
 
-const styles = StyleSheet.create({
-  list: {},
-})
+export default EditPassword

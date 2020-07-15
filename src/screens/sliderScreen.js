@@ -7,7 +7,9 @@ import { globalStyles, colors } from '../styles/globalStyles'
 import Navigator from '../routes/mainSwitchNav'
 
 const Slider = () => { 
+
   const [mainApp, setMainApp] = useState(false)
+  
   const fun = async () => {
     await AsyncStorage.setItem('check', 'true')
   }

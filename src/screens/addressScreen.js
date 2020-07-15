@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { View, ScrollView, TouchableWithoutFeedback, Keyboard, 
-  SafeAreaView, StatusBar, KeyboardAvoidingView, Dimensions 
+  SafeAreaView, StatusBar, KeyboardAvoidingView, Dimensions, Alert 
 } from 'react-native';
-import { Text, Button, ProgressBar, Divider } from 'react-native-paper';
+import Auth from '@aws-amplify/auth'
+import { Text, Button, ProgressBar } from 'react-native-paper';
+import StateContext from '../context/stateContext';
 import { globalStyles, colors } from '../styles/globalStyles';
-import DatePicker from '../components/datePicker';
 import MyInput from '../components/myInput';
 
 let inputRef = [null, null, null, null]
@@ -12,94 +13,102 @@ function addRef(i, ref) {
   inputRef.splice(i, 0, ref)
 }
 
-export default class Address extends React.Component {
-  state={
-    country: this.props.navigation.getParam('country'),
-    name: this.props.navigation.getParam('name'),
-    city: '',
-    zipcode: '',
-    street: '',
-    locality: '',
-  }
-  onChangeValue(key, value) {
-  this.setState({[key]: value})
-  }
-  continue = async () => {
-    this.props.navigation.navigate('Medical', { email: this.state.email, phoneNumber: this.state.phoneNumber, password: this.state.password, name: this.state.name })
+const Address = (props) => {
+
+  useEffect(() => 
+    onChangeState('country', props.navigation.getParam('country'))
+  ,[])
+  const { state, onChangeState } = useContext(StateContext)
+
+  const nextScreen = async () => {
+    console.log('hit')
+    const username = state.email
+    const password = state.password
+    const email = state.email
+    const phone_number = state.phoneNumber
+    await Auth.signUp({
+      username,
+      password,
+      attributes: { email, phone_number }
+    })
+    .then(() => {
+      console.log('sign up successful!')
+      Alert.alert('Enter the confirmation code you received.')
+      props.navigation.navigate('OTP')
+    })
+    .catch(err => {
+      if (! err.message) {
+        console.log('Error when signing up: ', err)
+        Alert.alert('Error when signing up: ', err)
+      } else {
+        console.log('Error when signing up: ', err.message)
+        Alert.alert('Error when signing up: ', err.message)
+      }
+    })
   }
 
-  render() {
-    return (
-      <KeyboardAvoidingView style={ globalStyles.container }> 
-        <TouchableWithoutFeedback onPress={ Keyboard.dismiss }>
-          <SafeAreaView style={{ width: Dimensions.get('screen').width, flex: 1, paddingHorizontal: 20 }}>
-            <ScrollView showsVerticalScrollIndicator={ false }>
-              <StatusBar />
-              <ProgressBar progress={0.4} style={{ marginVertical: 30 }}/>
-              <Text style={{ ...globalStyles.header, marginTop: 10 }}>Current address</Text>
-              <Text style={{ ...globalStyles.mediumText, marginTop: 15 }}>Country</Text>
-              <MyInput 
-                placeholder='Country'
-                disabled={ true }
-                value={ this.state.country }
-              />
-              <View style={{ flexDirection: 'row'}}>
-                <View style={{ flex: 1, marginRight: 5}}>
-                  <Text style={{ ...globalStyles.mediumText, marginTop: 15 }}>City</Text>
-                  <MyInput
-                    autoFocus={ true }
-                    inputRef={(v) => addRef(0, v)}
-                    value={ this.state.city }
-                    setValue={(value) => this.onChangeValue('city', value)}
-                    onSubmitEditing={() => inputRef[1].focus()}
-                  />
-                </View>
-                <View style={{ flex: 1, marginLeft: 5}}>
-                  <Text style={{ ...globalStyles.mediumText, marginTop: 15 }}>Zipcode</Text>
-                  <MyInput
-                    inputRef={(v) => addRef(1, v)}
-                    keyboardType='numeric'
-                    value={ this.state.zipcode }
-                    setValue={(value) => this.onChangeValue('zipcode', value)}
-                    onSubmitEditing={() => inputRef[2].focus()}
-                  />
-                </View>
+  return (
+    <KeyboardAvoidingView style={ globalStyles.container }> 
+      <TouchableWithoutFeedback onPress={ Keyboard.dismiss }>
+        <SafeAreaView style={{ width: Dimensions.get('screen').width, flex: 1, paddingHorizontal: 20 }}>
+          <ScrollView showsVerticalScrollIndicator={ false }>
+            <StatusBar />
+            <ProgressBar progress={0.4} style={{ marginVertical: 30 }}/>
+            <Text style={{ ...globalStyles.header, marginTop: 10 }}>Current address</Text>
+            <Text style={{ ...globalStyles.mediumText, marginTop: 15 }}>Country</Text>
+            <MyInput 
+              placeholder='Country'
+              disabled={ true }
+              value={ state.country }
+            />
+            <View style={{ flexDirection: 'row'}}>
+              <View style={{ flex: 1, marginRight: 5}}>
+                <Text style={{ ...globalStyles.mediumText, marginTop: 15 }}>City</Text>
+                <MyInput
+                  autoFocus={ true }
+                  inputRef={(v) => addRef(0, v)}
+                  value={ state.city }
+                  setValue={(value) => onChangeState('city', value)}
+                  onSubmitEditing={() => inputRef[1].focus()}
+                />
               </View>
-              <Text style={{ ...globalStyles.mediumText, marginTop: 15 }}>Street</Text>
-              <MyInput
-                inputRef={(v) => addRef(2, v)}
-                value={ this.state.street }
-                setValue={(value) => this.onChangeValue('street', value)}
-                onSubmitEditing={() => inputRef[3].focus()}
-              />
-              <Text style={{ ...globalStyles.mediumText, marginTop: 15 }}>Locality</Text>
-              <MyInput
-                inputRef={(v) => addRef(3, v)}
-                value={ this.state.locality }
-                setValue={(value) => this.onChangeValue('locality', value)}
-              />
-              
-              <Button 
-                mode='contained'
-                style={{ ...globalStyles.buttonStyle, marginBottom: 15, marginTop: 40 }}
-                onPress={ this.continue }
-              >
-                Continue
-              </Button>
-              <Divider />
-              <View style={{ flexDirection: 'row', alignSelf: 'center', marginBottom: 30 }}>
-                <Text style={ globalStyles.smallText }>Already have an account?</Text>
-                <Button 
-                  labelStyle={{ ...globalStyles.smallText, color: colors.primary }}
-                  onPress={() => console.log('')}
-                >
-                  Sign In
-                </Button>
+              <View style={{ flex: 1, marginLeft: 5}}>
+                <Text style={{ ...globalStyles.mediumText, marginTop: 15 }}>Zipcode</Text>
+                <MyInput
+                  inputRef={(v) => addRef(1, v)}
+                  keyboardType='numeric'
+                  value={ state.zipcode }
+                  setValue={(value) => onChangeState('zipcode', value)}
+                  onSubmitEditing={() => inputRef[2].focus()}
+                />
               </View>
-            </ScrollView>
-          </SafeAreaView>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
-    )
-  }
+            </View>
+            <Text style={{ ...globalStyles.mediumText, marginTop: 15 }}>Street</Text>
+            <MyInput
+              inputRef={(v) => addRef(2, v)}
+              value={ state.street }
+              setValue={(value) => onChangeState('street', value)}
+              onSubmitEditing={() => inputRef[3].focus()}
+            />
+            <Text style={{ ...globalStyles.mediumText, marginTop: 15 }}>Locality</Text>
+            <MyInput
+              inputRef={(v) => addRef(3, v)}
+              value={ state.locality }
+              setValue={(value) => onChangeState('locality', value)}
+            />
+            <Button onPress = {()=> console.log(state)}>press</Button>
+            <Button 
+              mode='contained'
+              style={{ ...globalStyles.buttonStyle, marginBottom: 15, marginTop: 40 }}
+              onPress={ nextScreen }
+            >
+              Continue
+            </Button>
+          </ScrollView>
+        </SafeAreaView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+  )
 }
+
+export default Address

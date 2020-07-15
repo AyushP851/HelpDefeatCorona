@@ -13,7 +13,7 @@ const DatePicker = ({ setdob }) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
-    setdob(currentDate.getDate()+` - `+currentDate.getMonth()+` - `+currentDate.getFullYear())
+    setdob(currentDate.getDate()+` - `+currentDate.getUTCMonth()+` - `+currentDate.getFullYear())
   };
   
 	const showTimepicker = () => {

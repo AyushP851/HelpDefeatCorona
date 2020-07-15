@@ -6,20 +6,22 @@ import { View, KeyboardAvoidingView, Keyboard,
 import { Text } from 'react-native-paper'
 import { globalStyles, colors } from '../styles/globalStyles'
 
-export default class Activity extends React.Component {
-  render() {
-    return (
-      <KeyboardAvoidingView style={ globalStyles.container }> 
-        <TouchableWithoutFeedback onPress={ Keyboard.dismiss }>
-          <SafeAreaView style={{ width: Dimensions.get('screen').width, flex: 1 }}>
-            <ScrollView showsVerticalScrollIndicator={ false }>
-              <StatusBar />
-              <View style={{ height: (Dimensions.get('screen').height)/4, backgroundColor: colors.primary }}></View>
-            </ScrollView>
-          </SafeAreaView>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
-    )
-  }
+const Activity = (props) => {
+  
+  return (
+    <KeyboardAvoidingView style={ globalStyles.container }> 
+      <TouchableWithoutFeedback onPress={ Keyboard.dismiss }>
+        <SafeAreaView style={{ width: Dimensions.get('screen').width, flex: 1 }}>
+          <ScrollView showsVerticalScrollIndicator={ false }>
+            <StatusBar />
+            <View style={{ height: (Dimensions.get('screen').height)/4, backgroundColor: colors.primary }}></View>
+            <Text style={ globalStyles.header }></Text>
+          </ScrollView>
+        </SafeAreaView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+  )
 }
+
+export default Activity
 
