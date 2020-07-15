@@ -12,17 +12,17 @@ const Home = () => {
 
   //useEffect(() => console.log('mounted'), [])
   const { state, onChangeState } = useContext(StateContext)
-  const apicall = async () => {
-    const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': true },
-    body: JSON.stringify(state)
-  }
-    var url = `https://534q6zi164.execute-api.ap-south-1.amazonaws.com/pluto/posthistory?`
-    console.log(url)
-    let res = await fetch(url, requestOptions)
-    console.log(res._bodyBlob)
-  }
+  // const apicall = async () => {
+  //   const requestOptions = {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': true },
+  //   body: JSON.stringify(state)
+  // }
+  //   var url = `https://534q6zi164.execute-api.ap-south-1.amazonaws.com/pluto/posthistory?`
+  //   console.log(url)
+  //   let res = await fetch(url, requestOptions)
+  //   console.log(res._bodyBlob)
+  // }
 
   return (
     <KeyboardAvoidingView style={ globalStyles.container }> 
