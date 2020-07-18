@@ -12,7 +12,7 @@ export const StateProvider = ({ children }) => {
     // password: '',
     // phoneNumber: '',
     // country: '',
-    // firstName: '',
+     firstName: 'Ayush',
     // lastName: '',
     // dob:'',
     // city: '',

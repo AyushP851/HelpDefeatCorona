@@ -1,28 +1,24 @@
-import React, { useState } from 'react';
-import { View, ScrollView, TouchableWithoutFeedback, Keyboard, 
+import React, { useContext } from 'react';
+import { View, TouchableWithoutFeedback, Keyboard, 
   SafeAreaView, StatusBar, KeyboardAvoidingView, Dimensions, Image 
 } from 'react-native';
-import { Text, Button, ProgressBar, Divider } from 'react-native-paper';
-import { globalStyles, colors } from '../styles/globalStyles';
-import DatePicker from '../components/datePicker';
-import MyInput from '../components/myInput';
+import { Text, Button, ProgressBar } from 'react-native-paper';
+import { globalStyles } from '../styles/globalStyles';
+import StateContext from '../context/stateContext'
+
 
 const End = (props) => {
 
-  const [state, setState] = useState({
-    name: props.navigation.getParam('name'),
-  })
-  const onChangeValue = (key, value) => {
-    setState({ ...state, [key]: value})
-  }
+  const { state } = useContext(StateContext)
 
   return (
     <KeyboardAvoidingView style={ globalStyles.container }> 
       <TouchableWithoutFeedback onPress={ Keyboard.dismiss }>
         <SafeAreaView style={{ width: Dimensions.get('screen').width, flex: 1, paddingHorizontal: 20 }}>
+          <StatusBar />
           <ProgressBar progress={ 1 } style={{ marginVertical: 30 }}/>
-          <Text style={{ ...globalStyles.header, marginTop: 10 }}>Thanks { state.name } for your Medical History!</Text>
-          <Image source={ require('../images/d.png') } style={{ alignSelf: 'center', marginTop: 40 }}/>
+          <Text style={{ ...globalStyles.header, marginTop: 10 }}>Thanks { state.firstName } for your Medical History!</Text>
+          <Image source={ require('../images/e.png') } style={{ alignSelf: 'center', marginTop: 60 }}/>
           <View style={{ flex: 1 }}></View>
           <Button 
             mode='contained'

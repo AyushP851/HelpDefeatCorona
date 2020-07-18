@@ -96,7 +96,6 @@ const Address = (props) => {
               value={ state.locality }
               setValue={(value) => onChangeState('locality', value)}
             />
-            <Button onPress = {()=> console.log(state)}>press</Button>
             <Button 
               mode='contained'
               style={{ ...globalStyles.buttonStyle, marginBottom: 15, marginTop: 40 }}

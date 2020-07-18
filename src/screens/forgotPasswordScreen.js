@@ -5,7 +5,7 @@ import { View, KeyboardAvoidingView, Keyboard,
 } from 'react-native'
 import Auth from '@aws-amplify/auth'
 import { Text, Button } from 'react-native-paper'
-import { globalStyles } from '../styles/globalStyles'
+import { globalStyles, colors } from '../styles/globalStyles'
 import MyInput from '../components/myInput'
 import { ScrollView } from 'react-native-gesture-handler'
 
@@ -79,6 +79,7 @@ const ForgotPassword = (props) => {
             />
             <Button 
               style={{ marginTop: 20 }}
+              color={ colors.accent }
               onPress={() =>  forgotPassword() }
             >
               {state.showRest ? 'Resend confirmation code': 'Send confirmation code'}
@@ -105,6 +106,7 @@ const ForgotPassword = (props) => {
                 />
                 <Button 
                   mode='outlined'
+                  color={ colors.accent }
                   onPress={() =>  forgotPasswordSubmit() }
                 >
                   Reset Password

@@ -79,7 +79,8 @@ const OTP = (props) => {
             setValue={(value) => setLocal(value)}
           />
           <Button
-            style={{ marginTop: 20 }} 
+            style={{ marginTop: 20 }}
+            color={ colors.accent } 
             onPress={() => resendSignUp()}>
             resend OTP
           </Button>
@@ -94,12 +95,12 @@ const OTP = (props) => {
           <Divider />
           <View style={{ flexWrap: 'wrap', flexDirection: 'row', marginBottom: 20, marginHorizontal: 30, marginTop: 10, justifyContent: 'center' }}>
             <Text style={{ ...globalStyles.smallText, marginBottom: -15 }}>By signing up you accept our </Text>
-            <Text style={{ ...globalStyles.smallText, color: colors.primary }}
+            <Text style={{ ...globalStyles.smallText, color: colors.accent }}
               onPress={() => Linking.openURL('http://google.com')}>
               terms of services
             </Text>
             <Text style={ globalStyles.smallText }> and </Text>
-            <Text style={{ ...globalStyles.smallText, color: colors.primary }}
+            <Text style={{ ...globalStyles.smallText, color: colors.accent }}
               onPress={() => Linking.openURL('http://google.com')}>
               privacy policy</Text>
             <Text style={ globalStyles.smallText }>.</Text>

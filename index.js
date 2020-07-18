@@ -32,13 +32,14 @@ const theme = {
     fonts: configureFonts(fontConfig),
     colors: {
       ...DefaultTheme.colors,
-      primary: '#4446AD',
+      primary: '#3B86EF',
+      accent: '#E89F23',
+      altAccent: '#FFEFD5',
       text: '#0C0D25',
       input: '#F9F9F9',
       buttonText: '#FFFFFF',
       background: '#FFFFFF',
       altBackground: '#F9FAFA',
-      accent: '#DFE0FF',
     },
   };
 

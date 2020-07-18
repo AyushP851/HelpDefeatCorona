@@ -25,7 +25,7 @@ const Allergy = (props) => {
           />
           <View style={{ flex:1 }}></View>
           <Badge
-            style={{ color: colors.primary, backgroundColor: colors.accent, alignSelf: 'center' }}
+            style={ globalStyles.badge }
             size={ 35 }
           >   1/3   </Badge>
           </View>
@@ -50,7 +50,7 @@ const Allergy = (props) => {
           <Button 
             mode='contained'
             style={{ ...globalStyles.buttonStyle, marginBottom: 40 }}
-            onPress={() => props.navigation.navigate('Condition', { name: state.name })}
+            onPress={() => props.navigation.navigate('Condition')}
           >
             Continue
           </Button>

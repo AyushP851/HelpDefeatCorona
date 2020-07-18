@@ -25,7 +25,7 @@ const Smoke = (props) => {
           />
           <View style={{ flex:1 }}></View>
           <Badge
-            style={{ color: colors.primary, backgroundColor: colors.accent, alignSelf: 'center' }}
+            style={ globalStyles.badge }
             size={ 35 }
           >   3/3   </Badge>
           </View>

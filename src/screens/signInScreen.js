@@ -72,7 +72,7 @@ const SignIn = (props) => {
           <View style={{ flexDirection: 'row', alignSelf: 'center', marginBottom: -10 }}>
             <Text style={ globalStyles.smallText }>Don't have an account?</Text>
             <Button 
-              labelStyle={{ ...globalStyles.smallText, color: colors.primary }}
+              labelStyle={{ ...globalStyles.smallText, color: colors.accent }}
               onPress={() => props.navigation.navigate('SignUp')}
             >
               Sign Up

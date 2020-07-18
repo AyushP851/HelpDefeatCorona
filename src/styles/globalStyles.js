@@ -5,13 +5,14 @@ export const colors = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#4446AD',
+    primary: '#3B86EF',
+    accent: '#E89F23',
+    altAccent: '#FFEFD5',
     text: '#0C0D25',
     input: '#F9F9F9',
     buttonText: '#FFFFFF',
     background: '#FFFFFF',
     altBackground: '#EAEAEA',
-    accent: '#DFE0FF',
   },
 }.colors
 
@@ -75,6 +76,10 @@ export const globalStyles = StyleSheet.create({
     backgroundColor: colors.altBackground,
     paddingVertical: 7,
   },
-
+  badge: {
+    color: colors.accent, 
+    backgroundColor: colors.altAccent, 
+    alignSelf: 'center'
+  }
 })
 

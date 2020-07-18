@@ -67,7 +67,7 @@ const Slider = () => {
           showNextButton={ false }
           showDoneButton={ false }
           dotStyle={{ marginBottom: 40, backgroundColor: '#ddd' }}
-          activeDotStyle={{ marginBottom: 44, backgroundColor: colors.primary }}
+          activeDotStyle={{ marginBottom: 44, backgroundColor: colors.accent }}
         />
         <Button 
           mode='contained'
@@ -79,7 +79,7 @@ const Slider = () => {
         <View style={{ flexDirection: 'row', alignSelf: 'center', marginBottom: 30 }}>
           <Text style={ globalStyles.smallText }>Already have an account?</Text>
           <Button 
-            labelStyle={{ ...globalStyles.smallText, color: colors.primary, marginLeft: 5 }}
+            labelStyle={{ ...globalStyles.smallText, color: colors.accent, marginLeft: 5 }}
             onPress={() => console.log('')}
           >
             Sign In
