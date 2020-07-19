@@ -36,18 +36,18 @@ const Smoke = (props) => {
               value={ state.smoker }
             >
               <RadioButton.Item 
-                style={{ backgroundColor: state.smoker==='current'?colors.accent:'#eee', paddingLeft: 30, borderRadius: 20, margin: 5 }}
-                color={ colors.primary }
+                style={{ backgroundColor: state.smoker==='current'?colors.altAccent:'#eee', paddingLeft: 30, borderRadius: 20, margin: 5 }}
+                color={ colors.accent }
                 label='I currently smoke' 
                 value='current' />
               <RadioButton.Item 
-                style={{ backgroundColor: state.smoker==='used'?colors.accent:'#eee', paddingLeft: 30, borderRadius: 20, margin: 5 }}
-                color={ colors.primary }
+                style={{ backgroundColor: state.smoker==='used'?colors.altAccent:'#eee', paddingLeft: 30, borderRadius: 20, margin: 5 }}
+                color={ colors.accent }
                 label='I used to smoke'  
                 value='used' />
                 <RadioButton.Item 
-                style={{ backgroundColor: state.smoker==='never'?colors.accent:'#eee', paddingLeft: 30, borderRadius: 20, margin: 5 }}
-                color={ colors.primary }
+                style={{ backgroundColor: state.smoker==='never'?colors.altAccent:'#eee', paddingLeft: 30, borderRadius: 20, margin: 5 }}
+                color={ colors.accent }
                 label='I’ve never smoked'  
                 value='never' />
             </RadioButton.Group>
@@ -58,13 +58,13 @@ const Smoke = (props) => {
               onValueChange={value => onChangeState('severeobesity', value==='true')} 
               value={ state.severeobesity?'true':'false' }>
               <RadioButton.Item 
-                style={{ backgroundColor: state.severeobesity?colors.accent:'#eee', paddingLeft: 30, borderRadius: 20, margin: 5 }}
-                color={ colors.primary }
+                style={{ backgroundColor: state.severeobesity?colors.altAccent:'#eee', paddingLeft: 30, borderRadius: 20, margin: 5 }}
+                color={ colors.accent }
                 label='Yes' 
                 value='true' />
               <RadioButton.Item 
-                style={{ backgroundColor: !state.severeobesity?colors.accent:'#eee', paddingLeft: 30, borderRadius: 20, margin: 5 }}
-                color={ colors.primary }
+                style={{ backgroundColor: !state.severeobesity?colors.altAccent:'#eee', paddingLeft: 30, borderRadius: 20, margin: 5 }}
+                color={ colors.accent }
                 label='No'  
                 value='false' />
             </RadioButton.Group>

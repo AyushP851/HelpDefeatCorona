@@ -2,10 +2,10 @@ import React, { useContext } from 'react'
 import { View, KeyboardAvoidingView, SafeAreaView, 
   TouchableWithoutFeedback, Dimensions, Keyboard, StatusBar,
 } from 'react-native'
-import { Text, IconButton, Badge, 
-  RadioButton, Button } from 'react-native-paper'
+import { Text, IconButton, Badge, Button } from 'react-native-paper'
 import StateContext from '../context/stateContext';
 import { globalStyles, colors } from '../styles/globalStyles'
+import MyRadio from '../components/MyRadio'
 
 const Allergy = (props) => {
 
@@ -30,22 +30,7 @@ const Allergy = (props) => {
           >   1/3   </Badge>
           </View>
           <Text style={{ ...globalStyles.header, marginVertical: 30}}>Do you have any allergies?</Text>
-          <View style={{ paddingHorizontal: 70}}>
-            <RadioButton.Group 
-              onValueChange={(value) => onChangeState('allergies', value==='true')} 
-              value={ state.allergies ? 'true' : 'false' }>
-              <RadioButton.Item 
-                style={{ backgroundColor: state.allergies===false ?'#eee':colors.accent, paddingLeft: 30, borderRadius: 20, margin: 10 }}
-                color={ colors.primary }
-                label='Yes' 
-                value='true' />
-              <RadioButton.Item 
-                style={{ backgroundColor: state.allergies===true ? '#eee':colors.accent, paddingLeft: 30, borderRadius: 20, margin: 10 }}
-                color={ colors.primary }
-                label='No'  
-                value='false' />
-            </RadioButton.Group>
-          </View>
+          <MyRadio current={ state.allergies } setCurrent={(value) => onChangeState('allergies', value)}/>
           <View style={{ flex: 1 }}></View>
           <Button 
             mode='contained'

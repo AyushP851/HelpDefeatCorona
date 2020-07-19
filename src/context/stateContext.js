@@ -5,7 +5,7 @@ const StateContext = React.createContext();
 export const StateProvider = ({ children }) => {
 
   const [state, setState] = useState({
-    //user: {},
+    //user data !!! to be filled by user on signup or retrieved from backend
     clientId: '',
     allergies9: '',
     // email: '',
@@ -35,6 +35,32 @@ export const StateProvider = ({ children }) => {
     // severeobesity: false,
     // pregnant: false,
     // weakenedimmunity: false,
+
+    //daily vitals !! filled on daily basis
+    // fever: false,
+    // chill: false,
+    // coughing: false,
+    // difficultbreathing: false,
+    // sorethroat: false,
+    // headache: false,
+    // vomiting: false,
+    // diarrhea: false,
+    // fatique: false,
+
+    //daily symptoms !! filled on daily basis
+    fever: false,
+    temperature: '222',
+    heartratefeel: 'medium',
+    description: '',
+    heartrate: '',
+    bloodpressure: '',
+    oxygensaturation: '',
+
+    //personal info !! filled on daily basis
+    // travel: false,
+    // exposed: false,
+    // found: false,
+    // feel: false,
   })
   const onChangeState = (key, value) => {
     setState({ ...state, [key]: value })
