@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, TouchableWithoutFeedback, Keyboard, 
   SafeAreaView, StatusBar, KeyboardAvoidingView, Dimensions, Image 
 } from 'react-native';
 import { Text, Button, ProgressBar, Divider } from 'react-native-paper';
 import { globalStyles, colors } from '../styles/globalStyles';
+import StateContext from '../context/stateContext'
 
 const Medical = (props) => {
+  const { state } = useContext(StateContext)
 
   return (
     <KeyboardAvoidingView style={ globalStyles.container }> 

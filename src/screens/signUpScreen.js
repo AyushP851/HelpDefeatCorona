@@ -21,10 +21,10 @@ const defaultCountry = data.filter((obj) => {
 
 const SignUp = (props) => {
 
+  const { state, onChangeState } = useContext(StateContext)
   useEffect(() => {
     onChangeState('phoneNumber', defaultCountry.dial_code)
   }, [])
-  const {  state, onChangeState } = useContext(StateContext)
   const [flag, setFlag] = useState(defaultCountry.flag)
   const [name, setName] = useState(defaultCountry.name)
   const [visible, setVisible] = useState(false)

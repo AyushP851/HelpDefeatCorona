@@ -9,7 +9,7 @@ import MyRadio from '../components/MyRadio'
 
 const Allergy = (props) => {
 
-  const { state, onChangeState} = useContext(StateContext)
+  const {state, onChangeState} = useContext(StateContext)
   
   return (
     <KeyboardAvoidingView style={ globalStyles.container }> 
